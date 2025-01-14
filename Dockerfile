@@ -29,5 +29,5 @@ COPY --from=builder-theme /app/unic-theme/build_keycloak/src/main/resources/them
 
 RUN /opt/keycloak/bin/kc.sh build
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
 
