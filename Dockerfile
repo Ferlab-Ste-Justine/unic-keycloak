@@ -1,0 +1,33 @@
+FROM node:18-alpine3.15 as builder-theme
+WORKDIR /app
+COPY . /app
+RUN cd unic-theme/ && npm install
+RUN cd unic-theme/ && npm run keycloak
+
+FROM maven:3-amazoncorretto-17 as builder-providers
+WORKDIR /app
+COPY . /app
+RUN cd unic-providers/ && mvn clean package -DskipTests
+
+FROM quay.io/keycloak/keycloak:26.0.0
+
+ENV KC_DB=postgres
+ENV KC_HEALTH_ENABLED=true
+ENV KC_METRICS_ENABLED=true
+ENV KC_HTTP_ENABLED=true
+ENV KC_HOSTNAME_DEBUG=true
+ENV KC_HOSTNAME_STRICT=false
+ENV KC_HOSTNAME_STRICT_HTTPS=false
+ENV KC_CACHE=ispn
+ENV KC_CACHE_STACK=kubernetes
+ENV JAVA_OPTS_APPEND=-Djgroups.dns.query=keycloak-headless
+
+WORKDIR /opt/keycloak
+
+COPY --from=builder-providers /app/unic-providers/target/bio.ferlab.keycloak.unic-keycloak-ext-jar-with-dependencies.jar /opt/keycloak/providers
+COPY --from=builder-theme /app/unic-theme/build_keycloak/src/main/resources/theme/keycloakify-unic-app /opt/keycloak/themes/keycloakify-unic-app
+
+RUN /opt/keycloak/bin/kc.sh build
+
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
+

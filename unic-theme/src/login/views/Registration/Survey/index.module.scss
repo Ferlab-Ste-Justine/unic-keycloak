@@ -1,0 +1,53 @@
+@import "../../../../style/themes/unic/dist/colors";
+
+.registrationForm {
+  .withCustomHelp {
+    div[class$="-item-label"] {
+      padding-bottom: 0;
+    }
+  }
+
+  div[class$="-item-label"] {
+    font-weight: 600;
+  }
+
+  span[class$="-item-optional"] {
+    font-weight: 400;
+  }
+
+  .checkBoxGroup {
+    width: 100%;
+  }
+
+  .help {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 8px;
+    line-height: 20px;
+  }
+
+  .allFieldRequiredNotice {
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .affiliationField {
+    margin-bottom: 0;
+  }
+
+  .noAffiliationField,
+  .affiliationField,
+  .researchAreaField {
+    padding-top: 8px;
+  }
+
+  .registrationFooter {
+    width: 100%;
+    margin-top: 24px;
+    justify-content: space-between;
+  }
+
+  .noMargin {
+    margin: 0;
+  }
+}
