@@ -8,11 +8,9 @@ import SideImageLayout from 'layout/SideImage';
 import type { I18n } from 'login/keycloak/i18n';
 import { KcContext } from 'login/keycloak/kcContext';
 
-import CiLogonIcon from 'assets/CiLogonIcon';
 import GoogleIcon from 'assets/GoogleIcon';
+import MainSideImage from 'assets/login-img.svg';
 import MicrosoftIcon from 'assets/MicrosoftIcon';
-import OrcidIcon from 'assets/ORCIDIcon';
-import MainSideImage from 'assets/side-img-svg.svg';
 import UNICLogoFull from 'assets/UNICLogoFull';
 
 import styles from './index.module.scss';
@@ -33,9 +31,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: 'log
 
   const socialImageMapping: any = {
     google: <GoogleIcon />,
-    orcid: <OrcidIcon />,
     microsoft: <MicrosoftIcon />,
-    cilogon: <CiLogonIcon />,
   };
 
   const socialProviders = social.providers || [];
