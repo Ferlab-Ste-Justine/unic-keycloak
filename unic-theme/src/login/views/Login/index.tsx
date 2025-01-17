@@ -9,8 +9,8 @@ import type { I18n } from 'login/keycloak/i18n';
 import { KcContext } from 'login/keycloak/kcContext';
 
 import GoogleIcon from 'assets/GoogleIcon';
-import MainSideImage from 'assets/side_image.png';
 import MicrosoftIcon from 'assets/MicrosoftIcon';
+import MainSideImage from 'assets/side_image.png';
 import UNICLogoFull from 'assets/UNICLogoFull';
 
 import styles from './index.module.scss';
