@@ -31,6 +31,7 @@ const userLogin = createAsyncThunk<
     console.log('[userLogin] err=', JSON.stringify(err, null, 2));
     if (api.isAxiosError(err)) {
       if (!err.response) {
+        console.log('[userLogin] !err.response, window.location.href to ', args.redirectUrl);
         window.location.href = args.redirectUrl;
         return;
       }
