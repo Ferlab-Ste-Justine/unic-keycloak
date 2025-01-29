@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import qs from 'qs';
 
 import { RootState } from 'store/types';
@@ -15,51 +14,48 @@ const userLogin = createAsyncThunk<
   },
   { rejectValue: string; state: RootState }
 >('user/login', async (args, thunkAPI) => {
-  console.log('[userLogin] args2=', JSON.stringify(args, null, 2));
+  console.log('[userLogin] with fetch args=', JSON.stringify(args, null, 2));
   try {
-    const response = await axios({
-      maxRedirects: 0,
-      validateStatus: (status) => status === 302 || status < 400, // Allow 302 responses
-      url: args.url,
+    const response = await fetch(args.url, {
       method: 'POST',
       headers: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Upgrade-Insecure-Requests': '1',
-        'Cache-Control': 'max-age=0',
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
-      data: qs.stringify(args.userInfo, { arrayFormat: 'repeat' }),
+      body: qs.stringify(args.userInfo, { arrayFormat: 'repeat' }),
+      redirect: 'manual', // ⬅️ Prevent browser from automatically following redirects
     });
+
+    console.log('[userLogin] First response:', response);
+
     if (response.status === 302) {
-      console.log('[userLogin] First redirect=', response.headers.location);
+      const redirectedUrl = response.headers.get('Location');
+      console.log('[userLogin] First redirect to:', redirectedUrl);
       // Manually follow the redirect
-      const redirectedUrl = response.headers.location;
       if (redirectedUrl) {
-        const secondResponse = await axios.get(redirectedUrl, {
-          maxRedirects: 0,
-          validateStatus: (status) => status === 302 || status < 400, // Allow 302 responses
-        });
-        console.log('[userLogin] Second redirect=', secondResponse.headers.location);
-        if (response.status === 302) {
-          window.location.href = secondResponse.headers.location;
+        try {
+          const secondResponse = await fetch(redirectedUrl, {
+            method: 'GET',
+            redirect: 'manual', // ⬅️ Prevent browser from following the second redirect
+          });
+
+          console.log('[userLogin] Second response:', secondResponse);
+
+          if (secondResponse.status === 302) {
+            const secondRedirectUrl = secondResponse.headers.get('Location');
+            console.log('[userLogin] Redirecting browser to:', secondRedirectUrl);
+            if (secondRedirectUrl) {
+              window.location.href = secondRedirectUrl;
+            }
+          }
+        } catch (secondError) {
+          console.error('[userLogin] Error in second redirect:', secondError);
         }
       }
     }
   } catch (err) {
-    //XHR forced to follow redirect 302, which results at the end in a CORS error.Only way to catch this, its to verify if response is undefined.
-    console.log('[userLogin] err2=', JSON.stringify(err, null, 2));
-    if (axios.isAxiosError(err)) {
-      console.log('[userLogin] err.response=', JSON.stringify(err.response, null, 2));
-      console.log(
-        '[userLogin] err.response?.request=',
-        JSON.stringify(err.response?.request, null, 2),
-      );
-      if (!err.response) {
-        console.log('[userLogin] !err.response, window.location.href to ', args.redirectUrl);
-        window.location.href = args.redirectUrl;
-        return;
-      }
-      thunkAPI.dispatch(userLogin.rejected(new Error(err.message), err.message, args));
-    }
+    console.error('[userLogin] First request error:', err);
+    console.log('[userLogin] Redirecting to fallback:', args.redirectUrl);
+    // window.location.href = args.redirectUrl;
   }
 });
 
