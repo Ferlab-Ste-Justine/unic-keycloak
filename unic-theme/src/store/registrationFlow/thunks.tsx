@@ -22,7 +22,7 @@ const userLogin = createAsyncThunk<
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: qs.stringify(args.userInfo, { arrayFormat: 'repeat' }),
-      redirect: 'manual', // ⬅️ Prevent browser from automatically following redirects
+      // redirect: 'manual', // ⬅️ Prevent browser from automatically following redirects
     });
 
     console.log('[userLogin] First response:', response);
@@ -53,9 +53,9 @@ const userLogin = createAsyncThunk<
       }
     }
   } catch (err) {
-    console.error('[userLogin] First request error:', err);
-    console.log('[userLogin] Redirecting to fallback:', args.redirectUrl);
-    // window.location.href = args.redirectUrl;
+    console.error('[userLogin] catch error:', JSON.stringify(err, null, 2));
+    // console.log('[userLogin] Redirecting to fallback:', args.redirectUrl);
+    window.location.href = args.url;
   }
 });
 
