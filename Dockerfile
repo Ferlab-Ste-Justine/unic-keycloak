@@ -1,7 +1,7 @@
 FROM node:18-alpine3.15 as builder-theme
 WORKDIR /app
 COPY . /app
-RUN cd unic-theme/ && npm install && npm run keycloak
+RUN cd unic-theme/ && npm install --legacy-peer-deps && npm run keycloak
 
 FROM maven:3-amazoncorretto-17 as builder-providers
 WORKDIR /app
