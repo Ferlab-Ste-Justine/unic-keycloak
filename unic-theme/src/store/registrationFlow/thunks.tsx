@@ -16,6 +16,7 @@ const userLogin = createAsyncThunk<
   },
   { rejectValue: string; state: RootState }
 >('user/login', async (args, thunkAPI) => {
+  console.log('[userLogin] args=', JSON.stringify(args, null, 2));
   api({
     url: args.url,
     method: 'POST',
@@ -27,6 +28,7 @@ const userLogin = createAsyncThunk<
     data: qs.stringify(args.userInfo, { arrayFormat: 'repeat' }),
   }).catch((err: Error | AxiosError) => {
     //XHR forced to follow redirect 302, which results at the end in a CORS error.Only way to catch this, its to verify if response is undefined.
+    console.log('[userLogin] err=', JSON.stringify(err, null, 2));
     if (api.isAxiosError(err)) {
       if (!err.response) {
         window.location.href = args.redirectUrl;
