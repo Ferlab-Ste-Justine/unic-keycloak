@@ -48,6 +48,10 @@ const userLogin = createAsyncThunk<
     //XHR forced to follow redirect 302, which results at the end in a CORS error.Only way to catch this, its to verify if response is undefined.
     console.log('[userLogin] err1=', JSON.stringify(err, null, 2));
     if (axios.isAxiosError(err)) {
+      console.log(
+        '[userLogin] err.response?.request=',
+        JSON.stringify(err.response?.request, null, 2),
+      );
       if (!err.response) {
         console.log('[userLogin] !err.response, window.location.href to ', args.redirectUrl);
         window.location.href = args.redirectUrl;
