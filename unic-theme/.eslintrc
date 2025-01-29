@@ -30,6 +30,7 @@
       }
     },
     "rules": {
+      "no-unused-vars": "warn",
       "arrow-body-style": ["error", "as-needed"],
       "complexity": ["warn", 16],
       "template-curly-spacing": "off",
@@ -43,7 +44,6 @@
         }
       ],
       "no-console": ["warn"],
-      "@typescript-eslint/no-unused-vars": "warn",
       "prefer-spread": "error",
       "prettier/prettier": ["error"],
       "react-hooks/rules-of-hooks": "error",

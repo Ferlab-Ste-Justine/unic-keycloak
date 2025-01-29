@@ -13,7 +13,7 @@ const userLogin = createAsyncThunk<
     redirectUrl: string;
   },
   { rejectValue: string; state: RootState }
->('user/login', async (args, thunkAPI) => {
+>('user/login', async (args) => {
   console.log('[userLogin] with fetch args=', JSON.stringify(args, null, 2));
   try {
     const response = await fetch(args.url, {
