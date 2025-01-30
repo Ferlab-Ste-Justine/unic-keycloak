@@ -1,11 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Space, Typography } from 'antd';
 import cx from 'classnames';
 import { I18n } from 'keycloakify/login/i18n';
 import { KcContext } from 'login/keycloak/kcContext';
 
-import { registrationFlowActions } from 'store/registrationFlow/slice';
 import { userLogin } from 'store/registrationFlow/thunks';
 
 import { sortOptionsLabelsByName } from '../../../../utils';
@@ -17,6 +15,11 @@ enum FORM_FIELDS {
   AFFILIATION = 'affiliation',
   NO_AFFILIATION = 'no_affiliation',
   RESEARCH_DOMAINS = 'research_domains',
+  FIRST_NAME = 'first_name',
+  LAST_NAME = 'last_name',
+  USER_TITLE = 'user_title',
+  EMAIL = 'email',
+  LINKEDIN = 'linkedin',
 }
 
 const { Text } = Typography;
@@ -71,6 +74,18 @@ const SurveyStep = ({
           name: [FORM_FIELDS.RESEARCH_DOMAINS],
           value: kcContext.userProfile.research_domains,
         },
+        {
+          name: [FORM_FIELDS.FIRST_NAME],
+          value: kcContext.userProfile.first_name,
+        },
+        {
+          name: [FORM_FIELDS.LAST_NAME],
+          value: kcContext.userProfile.last_name,
+        },
+        {
+          name: [FORM_FIELDS.USER_TITLE],
+          value: kcContext.userProfile.user_title,
+        },
       ]}
       onFinish={(values) => {
         dispatch(
@@ -78,8 +93,11 @@ const SurveyStep = ({
             url: kcContext.url.loginAction,
             redirectUrl: kcContext.redirectUrl,
             userInfo: {
-              first_name: kcContext.userProfile.first_name,
-              last_name: kcContext.userProfile.last_name,
+              first_name: values[FORM_FIELDS.FIRST_NAME],
+              last_name: values[FORM_FIELDS.LAST_NAME],
+              title: values[FORM_FIELDS.USER_TITLE],
+              email: values[FORM_FIELDS.LAST_NAME],
+              linkedin: values[FORM_FIELDS.LINKEDIN],
               roles: values[FORM_FIELDS.ROLES],
               affiliation: values[FORM_FIELDS.AFFILIATION],
               research_domains: values[FORM_FIELDS.RESEARCH_DOMAINS],
@@ -91,10 +109,127 @@ const SurveyStep = ({
       validateMessages={validateMessages}
     >
       <Text className={styles.allFieldRequiredNotice}>{advancedMsg('survey_introduction')}</Text>
+
+      <Form.Item
+        noStyle
+        shouldUpdate={(prevValues, currentValues) =>
+          prevValues[FORM_FIELDS.FIRST_NAME] !== currentValues[FORM_FIELDS.FIRST_NAME]
+        }
+      >
+        <Form.Item
+          className={cx(styles.withCustomHelp, styles.affiliationField)}
+          label={advancedMsg('first_name')}
+        >
+          <span className={styles.help}>{advancedMsg('first_name')}</span>
+          <Form.Item
+            name={FORM_FIELDS.FIRST_NAME}
+            className={styles.noMargin}
+            required={false}
+            rules={[{ required: true }]}
+          >
+            <Input />
+          </Form.Item>
+        </Form.Item>
+      </Form.Item>
+      <Form.Item
+        noStyle
+        shouldUpdate={(prevValues, currentValues) =>
+          prevValues[FORM_FIELDS.LAST_NAME] !== currentValues[FORM_FIELDS.LAST_NAME]
+        }
+      >
+        <Form.Item
+          className={cx(styles.withCustomHelp, styles.affiliationField)}
+          label={advancedMsg('last_name')}
+        >
+          <span className={styles.help}>{advancedMsg('last_name')}</span>
+          <Form.Item
+            name={FORM_FIELDS.LAST_NAME}
+            className={styles.noMargin}
+            required={false}
+            rules={[{ required: true }]}
+          >
+            <Input />
+          </Form.Item>
+        </Form.Item>
+      </Form.Item>
+      <Form.Item
+        noStyle
+        shouldUpdate={(prevValues, currentValues) =>
+          prevValues[FORM_FIELDS.USER_TITLE] !== currentValues[FORM_FIELDS.USER_TITLE]
+        }
+      >
+        <Form.Item
+          className={cx(styles.withCustomHelp, styles.affiliationField)}
+          label={advancedMsg('user_title')}
+        >
+          <span className={styles.help}>{advancedMsg('user_title')}</span>
+          <Form.Item name={FORM_FIELDS.USER_TITLE} className={styles.noMargin}>
+            <Input />
+          </Form.Item>
+        </Form.Item>
+      </Form.Item>
+      <Form.Item
+        noStyle
+        shouldUpdate={(prevValues, currentValues) =>
+          prevValues[FORM_FIELDS.AFFILIATION] !== currentValues[FORM_FIELDS.AFFILIATION]
+        }
+      >
+        <Form.Item
+          className={cx(styles.withCustomHelp, styles.affiliationField)}
+          label={advancedMsg('survey_form_affiliation_label')}
+        >
+          <span className={styles.help}>{advancedMsg('survey_form_affiliation_help')}</span>
+          <Form.Item
+            name={FORM_FIELDS.AFFILIATION}
+            className={styles.noMargin}
+            required={false}
+            rules={[{ required: true }]}
+          >
+            <Input />
+          </Form.Item>
+        </Form.Item>
+      </Form.Item>
+      <Form.Item
+        noStyle
+        shouldUpdate={(prevValues, currentValues) =>
+          prevValues[FORM_FIELDS.EMAIL] !== currentValues[FORM_FIELDS.EMAIL]
+        }
+      >
+        <Form.Item
+          className={cx(styles.withCustomHelp, styles.affiliationField)}
+          label={advancedMsg('emailScopeConsentText')}
+        >
+          <span className={styles.help}>{advancedMsg('emailScopeConsentText')}</span>
+          <Form.Item
+            name={FORM_FIELDS.EMAIL}
+            className={styles.noMargin}
+            required={false}
+            rules={[{ required: true, type: 'email' }]}
+          >
+            <Input />
+          </Form.Item>
+        </Form.Item>
+      </Form.Item>
+      <Form.Item
+        noStyle
+        shouldUpdate={(prevValues, currentValues) =>
+          prevValues[FORM_FIELDS.LINKEDIN] !== currentValues[FORM_FIELDS.LINKEDIN]
+        }
+      >
+        <Form.Item
+          className={cx(styles.withCustomHelp, styles.affiliationField)}
+          label={advancedMsg('survey_form_user_linkedin')}
+        >
+          <span className={styles.help}>{advancedMsg('survey_form_user_linkedin')}</span>
+          <Form.Item name={FORM_FIELDS.LINKEDIN} className={styles.noMargin}>
+            <Input />
+          </Form.Item>
+        </Form.Item>
+      </Form.Item>
       <Form.Item
         className={styles.withCustomHelp}
         name={FORM_FIELDS.ROLES}
-        label={advancedMsg('survey_form_roles_label')}
+        label={advancedMsg('survey_form_function')}
         required={false}
         rules={[{ required: true }]}
       >
@@ -108,56 +243,6 @@ const SurveyStep = ({
             ))}
           </Space>
         </Checkbox.Group>
-      </Form.Item>
-      <Form.Item
-        noStyle
-        shouldUpdate={(prevValues, currentValues) =>
-          prevValues[FORM_FIELDS.NO_AFFILIATION] !== currentValues[FORM_FIELDS.NO_AFFILIATION]
-        }
-      >
-        {({ getFieldValue }) =>
-          !getFieldValue(FORM_FIELDS.NO_AFFILIATION) ? (
-            <Form.Item
-              className={cx(styles.withCustomHelp, styles.affiliationField)}
-              label={advancedMsg('survey_form_affiliation_label')}
-            >
-              <span className={styles.help}>{advancedMsg('survey_form_affiliation_help')}</span>
-              <Form.Item
-                name={FORM_FIELDS.AFFILIATION}
-                className={styles.noMargin}
-                required={false}
-                rules={[{ required: true }]}
-              >
-                <Input />
-              </Form.Item>
-            </Form.Item>
-          ) : null
-        }
-      </Form.Item>
-      <Form.Item
-        noStyle
-        shouldUpdate={(prevValues, currentValues) =>
-          prevValues[FORM_FIELDS.NO_AFFILIATION] !== currentValues[FORM_FIELDS.NO_AFFILIATION]
-        }
-      >
-        {() => (
-          <Form.Item
-            name={FORM_FIELDS.NO_AFFILIATION}
-            label={
-              form.getFieldValue(FORM_FIELDS.NO_AFFILIATION)
-                ? advancedMsg('survey_form_affiliation_label')
-                : ''
-            }
-            className={cx(
-              styles.withCustomHelp,
-              form.getFieldValue(FORM_FIELDS.NO_AFFILIATION) && styles.noAffiliationField,
-            )}
-            rules={[{ required: false }]}
-            valuePropName="checked"
-          >
-            <Checkbox>{advancedMsg('survey_form_no_affiliation_label')}</Checkbox>
-          </Form.Item>
-        )}
       </Form.Item>
       <Form.Item
         className={styles.withCustomHelp}
@@ -178,12 +263,6 @@ const SurveyStep = ({
         </Checkbox.Group>
       </Form.Item>
       <Space className={styles.registrationFooter}>
-        <Button
-          icon={<ArrowLeftOutlined />}
-          onClick={() => dispatch(registrationFlowActions.previousStep())}
-        >
-          {advancedMsg('back')}
-        </Button>
         <Space>
           <Button onClick={() => (window.location.href = redirectUrl)}>
             {advancedMsg('cancel')}

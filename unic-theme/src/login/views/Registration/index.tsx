@@ -5,18 +5,17 @@ import { I18n } from 'login/keycloak/i18n';
 import { KcContext } from 'login/keycloak/kcContext';
 import { ErrorContainer } from 'login/views/Error';
 
-import MainSideImage from 'assets/side-img-svg.svg';
+import MainSideImage from 'assets/side_image.png';
 import { useRegistrationFlow } from 'store/registrationFlow';
 
 import SurveyStep from './Survey';
-import TermsStep from './Terms';
 
 import styles from './index.module.scss';
 
 export default function Registration(
   props: PageProps<Extract<KcContext, { pageId: 'login-update-profile.ftl' }>, I18n>,
 ) {
-  const { currentStep, hasError } = useRegistrationFlow();
+  const { hasError } = useRegistrationFlow();
   const { kcContext, i18n } = props;
   const { advancedMsg } = i18n;
 
@@ -24,11 +23,7 @@ export default function Registration(
     <SideImageLayout sideImgSrc={MainSideImage} theme="light" alignCenter={false}>
       <ScrollContent className={styles.joinPageWrapper}>
         <div className={styles.contentWrapper}>
-          {currentStep === 1 ? (
-            <TermsStep kcContext={kcContext} i18n={i18n} />
-          ) : (
-            <SurveyStep kcContext={kcContext} i18n={i18n} />
-          )}
+          <SurveyStep kcContext={kcContext} i18n={i18n} />
         </div>
       </ScrollContent>
     </SideImageLayout>
