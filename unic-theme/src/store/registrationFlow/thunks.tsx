@@ -22,9 +22,8 @@ const userLogin = createAsyncThunk<
     method: 'POST',
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
-      'Upgrade-Insecure-Requests': '1',
-      'Cache-Control': 'max-age=0',
       'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': 'true',
     },
     data: qs.stringify(args.userInfo, { arrayFormat: 'repeat' }),
   }).catch((err: Error | AxiosError) => {
