@@ -4,6 +4,9 @@ import { createUseI18n } from 'keycloakify/login';
 export const { useI18n } = createUseI18n({
   en: {
     login_title: 'Log in with',
+    first_name: 'First Name',
+    last_name: 'Last Name',
+    user_title: 'Title',
     registration_title: 'UNIC Portal Registration',
     portal_introduction:
       'The UNIC data portal enables research, visualization and access to sensitive and confidential data. Some datasets may require additional approvals and terms and conditions from the studies trust.',
@@ -37,15 +40,20 @@ export const { useI18n } = createUseI18n({
     terms_disclaimer_error: 'Please accept the terms & conditions and portal disclaimers',
     survey_introduction:
       'Thank you for completing this brief form. The more information we have about our users, the more we can continue to make improvements to the portal. The information you submit here will never be disclosed. All fields below need to be filled out.',
+    survey_form_function: 'Function',
     survey_form_roles_label: 'I am a',
     checkbox_help: 'Check all that apply',
+    survey_form_user_linkedin: 'LinkedIn',
+    survey_form_role_bioinformatician_software_developer:
+      'Bioinformatician, data analyst, statistician',
     survey_form_role_researcher_in_academic_or_non_profit_institution:
       'Researcher in an academic or non-profit institution',
     survey_form_role_clinician: 'Clinician',
-    survey_form_role_representative_of_commercial_or_for_profit_company:
-      'Representative of a commercial or for-profit company',
-    survey_form_role_bioinformatician_software_developer: 'Bioinformatician, software developer',
     survey_form_role_employee_in_governmental_agency: 'Employee in a governmental agency',
+    survey_form_role_representative_of_commercial_or_for_profit_company:
+      'Representative of a commercial or for-profit enterprise',
+    survey_form_role_manager: 'Manager',
+    survey_form_role_student: 'Student',
     survey_form_role_other: 'Other',
     survey_form_affiliation_label: 'Affiliation',
     survey_form_affiliation_help: 'Provide institutional or organizational affiliation',
@@ -59,6 +67,7 @@ export const { useI18n } = createUseI18n({
       'Circulatory and Respiratory Health',
     survey_form_research_domain_general_health: 'General Health',
     survey_form_research_domain_infection_immunity: 'Infection and Immunity',
+    survey_form_research_domain_ia: 'Artificial intelligence',
     survey_form_research_domain_musculoskeletal_health_arthritis:
       'Musculoskeletal Health and Arthritis',
     survey_form_research_domain_neurodevelopmental_conditions: 'Neurodevelopmental Conditions',
@@ -113,6 +122,9 @@ export const { useI18n } = createUseI18n({
   },
   fr: {
     login_title: 'Choisir votre identifiant',
+    first_name: 'Prénom',
+    last_name: 'Nom',
+    user_title: 'Titre',
     registration_title: 'Inscription au portail du UNIC',
     portal_introduction:
       'Le portail de données du UNIC permet la recherche, la visualisation et l’accès à des données sensibles et confidentielles. Certains jeux de données peuvent exiger des autorisations et des termes et conditions supplémentaires de la part des études fiduciaires.',
@@ -147,40 +159,48 @@ export const { useI18n } = createUseI18n({
       'Veuillez accepter les termes & conditions  et les clauses de non-responsabilité du portail',
     survey_introduction:
       'Merci de bien vouloir remplir ce petit formulaire. En connaître un peu plus sur nos utilisateurs nous est extrêmement utile pour continuer à améliorer le portail. L’information saisie ci-dessous ne sera jamais partagée. Tous les champs ci-dessous doivent être remplis.',
+    survey_form_function: 'Fonction',
     survey_form_roles_label: 'Je suis un(e)',
     checkbox_help: 'Cochez tout ce qui s’applique',
+    survey_form_user_linkedin: 'LinkedIn',
+    survey_form_role_bioinformatician_software_developer:
+      'Bioinformaticien(ne), Analyste de données, Statisticien(ne)',
     survey_form_role_researcher_in_academic_or_non_profit_institution:
       'Chercheur(e) dans une institution académique ou sans but lucratif',
-    survey_form_role_representative_of_commercial_or_for_profit_company:
-      "Représentant(e) d'une entreprise commerciale ou à but lucratif",
-    survey_form_role_bioinformatician_software_developer:
-      'Bioinformaticien(ne), développeur(e) logiciel',
     survey_form_role_clinician: 'Clinicien(ne)',
     survey_form_role_employee_in_governmental_agency: 'Employé(e) d’un organisme gouvernemental',
+    survey_form_role_representative_of_commercial_or_for_profit_company:
+      "Représentant(e) d'une entreprise commerciale ou à but lucratif",
+    survey_form_role_manager: 'Gestionnaire',
+    survey_form_role_student: 'Étudiant(e)',
     survey_form_role_other: 'Autre',
+
     survey_form_affiliation_label: 'Affiliation',
     survey_form_affiliation_help:
       'Indiquez votre affiliation institutionnelle ou organisationnelle',
     survey_form_no_affiliation_label: "Je n'ai pas d'affiliation institutionnelle",
     survey_form_research_domain_label: 'Domaine de recherche',
-    survey_form_research_domain_aging: 'Vieillissement',
+
     survey_form_research_domain_bioinformatics: 'Bioinformatique',
-    survey_form_research_domain_birth_defects: 'Malformations congénitales',
     survey_form_research_domain_cancer: 'Cancer',
-    survey_form_research_domain_circulatory_respiratory_health:
-      'Santé circulatoire et respiratoire',
-    survey_form_research_domain_general_health: 'Santé générale',
-    survey_form_research_domain_infection_immunity: 'Infection et immunité',
-    survey_form_research_domain_musculoskeletal_health_arthritis:
-      'Santé musculo-squelettique et arthrite',
     survey_form_research_domain_neurodevelopmental_conditions: 'Conditions neuro-développementales',
+    survey_form_research_domain_population_genomics: 'Génomique des populations',
+    survey_form_research_domain_infection_immunity: 'Infection et immunité',
+    survey_form_research_domain_ia: 'Intelligence artificielle',
+    survey_form_research_domain_rare_diseases: 'Maladies rares',
+    survey_form_research_domain_birth_defects: 'Malformations congénitales',
     survey_form_research_domain_neurosciences_mental_health_addiction:
       'Neurosciences, santé mentale et toxicomanie',
     survey_form_research_domain_nutrition_metabolism_diabetes: 'Nutrition, métabolisme et diabète',
-    survey_form_research_domain_population_genomics: 'Génomique des populations',
-    survey_form_research_domain_rare_diseases: 'Maladies rares',
+    survey_form_research_domain_circulatory_respiratory_health:
+      'Santé circulatoire et respiratoire',
+    survey_form_research_domain_general_health: 'Santé générale',
+    survey_form_research_domain_musculoskeletal_health_arthritis:
+      'Santé musculo-squelettique et arthrite',
+    survey_form_research_domain_aging: 'Vieillissement',
     survey_form_research_domain_not_applicable: "Ne s'applique pas",
     survey_form_research_domain_other: 'Autre',
+
     submit: 'Soumettre',
     back: 'Précédent',
     error_title: 'Impossible de terminer la demande',

@@ -6,11 +6,13 @@ type TUserProfile = {
   email?: string;
   first_name?: string;
   last_name?: string;
+  user_title?: string;
   era_commons_id?: string;
   nih_ned_id?: string;
   external_individual_fullname?: string;
   external_individual_email?: string;
   affiliation?: string;
+  linkedin?: string;
   portal_usages?: string[];
   roles?: string[];
   research_domains?: string[];
@@ -53,7 +55,7 @@ export type KcContextExtension =
 export const { kcContext } = getKcContext<KcContextExtension>({
   /* Uncomment to test outside of keycloak, ⚠️ don't forget to run 'npm run keycloak' at least once */
   // mockPageId: 'login-update-profile.ftl',
-  mockPageId: 'login.ftl',
+  // mockPageId: 'login.ftl',
   // mockPageId: 'error.ftl',
   // mockPageId: 'login-oauth2-device-verify-user-code.ftl',
   // mockPageId: 'login-oauth-grant.ftl',

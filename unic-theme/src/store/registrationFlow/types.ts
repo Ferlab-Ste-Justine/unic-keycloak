@@ -10,6 +10,8 @@ export type TUser = {
   era_commons_id?: string;
   nih_ned_id?: string;
   email?: string;
+  linkedin?: string;
+  title?: string;
   external_individual_fullname?: string;
   external_individual_email?: string;
   roles?: string[];
