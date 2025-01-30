@@ -17,7 +17,7 @@ const userLogin = createAsyncThunk<
   { rejectValue: string; state: RootState }
 >('user/login', async (args, thunkAPI) => {
   console.log('[userLogin] args=', args);
-  window.location.href = args.redirectUrl;
+  window.location.href = args.url;
   // api({
   //   url: args.url,
   //   method: 'POST',
