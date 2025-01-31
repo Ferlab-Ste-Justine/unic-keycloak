@@ -23,12 +23,10 @@
   .pageContent {
     overflow: auto;
     flex: 1;
-    background: $blue-8;
 
     &.alignCenter {
       justify-content: center;
       align-items: center;
-      background: $blue-8;
     }
 
     &.light {

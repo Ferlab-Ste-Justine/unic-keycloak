@@ -45,6 +45,9 @@ const SurveyStep = ({
   const roleOptions = kcContext.userOptions.roleOptions || [];
   const researchDomainOptions = kcContext.userOptions.researchDomainOptions || [];
   const roleOptionsSorted = sortOptionsLabelsByName(roleOptions, advancedMsg, roleMessagePrefix);
+  console.log(roleOptions);
+  console.log(roleOptionsSorted);
+
   const researchDomainOptionsSorted = sortOptionsLabelsByName(
     researchDomainOptions,
     advancedMsg,
@@ -293,7 +296,7 @@ const SurveyStep = ({
           getFieldValue(FORM_FIELDS.RESEARCH_DOMAINS)?.includes(OTHER_KEY) ? (
             <Form.Item
               className={styles.dynamicField}
-              name={FORM_FIELDS.OTHER_ROLE}
+              name={FORM_FIELDS.OTHER_RESEARCH_DOMAINS}
               label={advancedMsgStr('role_other_label')}
               required={false}
             >

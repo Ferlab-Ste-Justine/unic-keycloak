@@ -5,7 +5,7 @@ import { I18n } from 'login/keycloak/i18n';
 import { KcContext } from 'login/keycloak/kcContext';
 
 import ErrorIcon from 'assets/ErrorIcon';
-import MainSideImage from 'assets/side-img-svg.svg';
+import MainSideImage from 'assets/side_image.png';
 
 import styles from './index.module.scss';
 
