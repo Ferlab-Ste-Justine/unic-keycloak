@@ -38,6 +38,8 @@ export const { useI18n } = createUseI18n({
     cancel: 'Cancel',
     next: 'Next',
     terms_disclaimer_error: 'Please accept the terms & conditions and portal disclaimers',
+    role_other_label: 'Please describe',
+    other_label: 'Other',
     survey_introduction:
       'Thank you for completing this brief form. The more information we have about our users, the more we can continue to make improvements to the portal. The information you submit here will never be disclosed. All fields below need to be filled out.',
     survey_form_function: 'Function',
@@ -54,7 +56,6 @@ export const { useI18n } = createUseI18n({
       'Representative of a commercial or for-profit enterprise',
     survey_form_role_manager: 'Manager',
     survey_form_role_student: 'Student',
-    survey_form_role_other: 'Other',
     survey_form_affiliation_label: 'Affiliation',
     survey_form_affiliation_help: 'Provide institutional or organizational affiliation',
     survey_form_no_affiliation_label: 'I do not have an institutional affiliation',
@@ -77,7 +78,6 @@ export const { useI18n } = createUseI18n({
     survey_form_research_domain_population_genomics: 'Population Genomics',
     survey_form_research_domain_rare_diseases: 'Rare Diseases',
     survey_form_research_domain_not_applicable: 'Not Applicable',
-    survey_form_research_domain_other: 'Other',
     submit: 'Submit',
     back: 'Back',
     error_title: 'Unable to complete request',
@@ -157,6 +157,8 @@ export const { useI18n } = createUseI18n({
     next: 'Suivant',
     terms_disclaimer_error:
       'Veuillez accepter les termes & conditions  et les clauses de non-responsabilité du portail',
+    role_other_label: 'Veuillez décrire',
+    other_label: 'Autre',
     survey_introduction:
       'Merci de bien vouloir remplir ce petit formulaire. En connaître un peu plus sur nos utilisateurs nous est extrêmement utile pour continuer à améliorer le portail. L’information saisie ci-dessous ne sera jamais partagée. Tous les champs ci-dessous doivent être remplis.',
     survey_form_function: 'Fonction',
@@ -173,14 +175,11 @@ export const { useI18n } = createUseI18n({
       "Représentant(e) d'une entreprise commerciale ou à but lucratif",
     survey_form_role_manager: 'Gestionnaire',
     survey_form_role_student: 'Étudiant(e)',
-    survey_form_role_other: 'Autre',
-
     survey_form_affiliation_label: 'Affiliation',
     survey_form_affiliation_help:
       'Indiquez votre affiliation institutionnelle ou organisationnelle',
     survey_form_no_affiliation_label: "Je n'ai pas d'affiliation institutionnelle",
     survey_form_research_domain_label: 'Domaine de recherche',
-
     survey_form_research_domain_bioinformatics: 'Bioinformatique',
     survey_form_research_domain_cancer: 'Cancer',
     survey_form_research_domain_neurodevelopmental_conditions: 'Conditions neuro-développementales',
@@ -199,8 +198,6 @@ export const { useI18n } = createUseI18n({
       'Santé musculo-squelettique et arthrite',
     survey_form_research_domain_aging: 'Vieillissement',
     survey_form_research_domain_not_applicable: "Ne s'applique pas",
-    survey_form_research_domain_other: 'Autre',
-
     submit: 'Soumettre',
     back: 'Précédent',
     error_title: 'Impossible de terminer la demande',

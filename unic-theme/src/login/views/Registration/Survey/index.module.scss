@@ -19,6 +19,26 @@
     width: 100%;
   }
 
+  .dynamicField {
+    &:not(.inner) {
+      margin-top: -25px;
+    }
+
+    &.inner {
+      margin-bottom: 0;
+    }
+
+    &:not(.withCustomHelp) {
+      div[class$='-item-label'] {
+        padding-bottom: 4px;
+      }
+    }
+
+    label {
+      font-size: 12px;
+    }
+  }
+
   .help {
     display: block;
     font-size: 12px;

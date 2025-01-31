@@ -111,10 +111,6 @@ export const { kcContext } = getKcContext<KcContextExtension>({
             value: 'employee_in_governmental_agency',
             label: 'Employee in a governmental agency',
           },
-          {
-            value: 'other',
-            label: 'Other',
-          },
         ],
         researchDomainOptions: [
           {
@@ -128,10 +124,6 @@ export const { kcContext } = getKcContext<KcContextExtension>({
           {
             value: 'birth_defects',
             label: 'Birth Defects',
-          },
-          {
-            value: 'other',
-            label: 'Other',
           },
         ],
         usageOptions: [],

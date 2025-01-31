@@ -12,6 +12,7 @@ import styles from './index.module.scss';
 
 enum FORM_FIELDS {
   ROLES = 'roles',
+  OTHER_ROLE = 'other_role',
   AFFILIATION = 'affiliation',
   NO_AFFILIATION = 'no_affiliation',
   RESEARCH_DOMAINS = 'research_domains',
@@ -20,6 +21,7 @@ enum FORM_FIELDS {
   USER_TITLE = 'user_title',
   EMAIL = 'email',
   LINKEDIN = 'linkedin',
+  OTHER_RESEARCH_DOMAINS = 'other_research_domains',
 }
 
 const { Text } = Typography;
@@ -49,6 +51,8 @@ const SurveyStep = ({
     researchDomainMessagePrefix,
   );
 
+  const OTHER_KEY = 'other';
+
   const validateMessages = {
     required: advancedMsgStr('required_field_error'),
   };
@@ -61,10 +65,6 @@ const SurveyStep = ({
         {
           name: [FORM_FIELDS.ROLES],
           value: kcContext.userProfile.roles,
-        },
-        {
-          name: [FORM_FIELDS.AFFILIATION],
-          value: kcContext.userProfile.affiliation,
         },
         {
           name: [FORM_FIELDS.NO_AFFILIATION],
@@ -86,6 +86,10 @@ const SurveyStep = ({
           name: [FORM_FIELDS.USER_TITLE],
           value: kcContext.userProfile.user_title,
         },
+        {
+          name: [FORM_FIELDS.EMAIL],
+          value: kcContext.userProfile.email,
+        },
       ]}
       onFinish={(values) => {
         dispatch(
@@ -98,8 +102,8 @@ const SurveyStep = ({
               title: values[FORM_FIELDS.USER_TITLE],
               email: values[FORM_FIELDS.LAST_NAME],
               linkedin: values[FORM_FIELDS.LINKEDIN],
-              roles: values[FORM_FIELDS.ROLES],
               affiliation: values[FORM_FIELDS.AFFILIATION],
+              roles: values[FORM_FIELDS.ROLES],
               research_domains: values[FORM_FIELDS.RESEARCH_DOMAINS],
             },
           }),
@@ -145,7 +149,6 @@ const SurveyStep = ({
           <Form.Item
             name={FORM_FIELDS.LAST_NAME}
             className={styles.noMargin}
-            required={false}
             rules={[{ required: true }]}
           >
             <Input />
@@ -230,8 +233,6 @@ const SurveyStep = ({
         className={styles.withCustomHelp}
         name={FORM_FIELDS.ROLES}
         label={advancedMsg('survey_form_function')}
-        required={false}
-        rules={[{ required: true }]}
       >
         <Checkbox.Group className={styles.checkBoxGroup}>
           <span className={styles.help}>{advancedMsg('checkbox_help')}</span>
@@ -241,15 +242,34 @@ const SurveyStep = ({
                 {option.label}
               </Checkbox>
             ))}
+            <Checkbox value={OTHER_KEY}>{advancedMsgStr('other_label')}</Checkbox>
           </Space>
         </Checkbox.Group>
+      </Form.Item>
+      <Form.Item
+        noStyle
+        shouldUpdate={(prevValues, currentValues) =>
+          prevValues[FORM_FIELDS.ROLES] !== currentValues[FORM_FIELDS.ROLES]
+        }
+      >
+        {({ getFieldValue }) =>
+          getFieldValue(FORM_FIELDS.ROLES)?.includes(OTHER_KEY) ? (
+            <Form.Item
+              className={styles.dynamicField}
+              name={FORM_FIELDS.OTHER_ROLE}
+              label={advancedMsgStr('role_other_label')}
+              required={false}
+              rules={[{ required: true }]}
+            >
+              <Input />
+            </Form.Item>
+          ) : null
+        }
       </Form.Item>
       <Form.Item
         className={styles.withCustomHelp}
         name={FORM_FIELDS.RESEARCH_DOMAINS}
         label={advancedMsg('survey_form_research_domain_label')}
-        required={false}
-        rules={[{ required: true }]}
       >
         <Checkbox.Group className={styles.checkBoxGroup}>
           <span className={styles.help}>{advancedMsg('checkbox_help')}</span>
@@ -259,8 +279,28 @@ const SurveyStep = ({
                 {option.label}
               </Checkbox>
             ))}
+            <Checkbox value={OTHER_KEY}>{advancedMsgStr('other_label')}</Checkbox>
           </Space>
         </Checkbox.Group>
+      </Form.Item>
+      <Form.Item
+        noStyle
+        shouldUpdate={(prevValues, currentValues) =>
+          prevValues[FORM_FIELDS.RESEARCH_DOMAINS] !== currentValues[FORM_FIELDS.RESEARCH_DOMAINS]
+        }
+      >
+        {({ getFieldValue }) =>
+          getFieldValue(FORM_FIELDS.RESEARCH_DOMAINS)?.includes(OTHER_KEY) ? (
+            <Form.Item
+              className={styles.dynamicField}
+              name={FORM_FIELDS.OTHER_ROLE}
+              label={advancedMsgStr('role_other_label')}
+              required={false}
+            >
+              <Input />
+            </Form.Item>
+          ) : null
+        }
       </Form.Item>
       <Space className={styles.registrationFooter}>
         <Space>
