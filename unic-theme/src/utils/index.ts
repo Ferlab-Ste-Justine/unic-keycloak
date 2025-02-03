@@ -8,6 +8,9 @@ export interface IUserOptions {
   researchDomainOptions: IOption[];
 }
 
+export const LINKEDIN_REGEX: RegExp =
+  /^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)\/([-a-zA-Z0-9]+)\/*/iu;
+
 const OTHER_KEY = 'other';
 
 /**

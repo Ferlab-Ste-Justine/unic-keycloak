@@ -6,7 +6,7 @@ import { KcContext } from 'login/keycloak/kcContext';
 
 import { userLogin } from 'store/registrationFlow/thunks';
 
-import { sortOptionsLabelsByName } from '../../../../utils';
+import { LINKEDIN_REGEX, sortOptionsLabelsByName } from '../../../../utils';
 
 import styles from './index.module.scss';
 
@@ -114,8 +114,6 @@ const SurveyStep = ({
         },
       ]}
       onFinish={(values) => {
-        console.log('linkenin', values[FORM_FIELDS.LINKEDIN]);
-        console.log('title', values[FORM_FIELDS.USER_TITLE]);
         dispatch(
           userLogin({
             url: kcContext.url.loginAction,
@@ -251,7 +249,16 @@ const SurveyStep = ({
           label={advancedMsg('survey_form_user_linkedin')}
         >
           <span className={styles.help}>{advancedMsg('survey_form_user_linkedin')}</span>
-          <Form.Item name={FORM_FIELDS.LINKEDIN} className={styles.noMargin}>
+          <Form.Item
+            name={FORM_FIELDS.LINKEDIN}
+            className={styles.noMargin}
+            rules={[
+              {
+                pattern: LINKEDIN_REGEX,
+                message: advancedMsg('survey_form_user_linkedin_non_valid'),
+              },
+            ]}
+          >
             <Input />
           </Form.Item>
         </Form.Item>

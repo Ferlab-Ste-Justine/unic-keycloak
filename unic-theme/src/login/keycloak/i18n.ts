@@ -46,6 +46,7 @@ export const { useI18n } = createUseI18n({
     survey_form_roles_label: 'I am a',
     checkbox_help: 'Check all that apply',
     survey_form_user_linkedin: 'LinkedIn',
+    survey_form_user_linkedin_non_valid: 'Not a valid Linkedin URL',
     survey_form_role_bioinformatician_software_developer:
       'Bioinformatician, data analyst, statistician',
     survey_form_role_researcher_in_academic_or_non_profit_institution:
@@ -165,6 +166,7 @@ export const { useI18n } = createUseI18n({
     survey_form_roles_label: 'Je suis un(e)',
     checkbox_help: 'Cochez tout ce qui s’applique',
     survey_form_user_linkedin: 'LinkedIn',
+    survey_form_user_linkedin_non_valid: 'Pas un lien Linkedin valide',
     survey_form_role_bioinformatician_software_developer:
       'Bioinformaticien(ne), Analyste de données, Statisticien(ne)',
     survey_form_role_researcher_in_academic_or_non_profit_institution:
