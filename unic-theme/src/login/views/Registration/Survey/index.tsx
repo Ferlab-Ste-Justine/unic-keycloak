@@ -114,7 +114,7 @@ const SurveyStep = ({
         },
       ]}
       onFinish={(values) => {
-        console.log('linkenin',values[FORM_FIELDS.LINKEDIN]);
+        console.log('linkenin', values[FORM_FIELDS.LINKEDIN]);
         console.log('title', values[FORM_FIELDS.USER_TITLE]);
         dispatch(
           userLogin({
