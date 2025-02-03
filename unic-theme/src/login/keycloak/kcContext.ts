@@ -6,7 +6,7 @@ type TUserProfile = {
   email?: string;
   first_name?: string;
   last_name?: string;
-  user_title?: string;
+  title?: string;
   era_commons_id?: string;
   nih_ned_id?: string;
   external_individual_fullname?: string;

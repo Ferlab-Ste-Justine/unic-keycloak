@@ -45,8 +45,6 @@ const SurveyStep = ({
   const roleOptions = kcContext.userOptions.roleOptions || [];
   const researchDomainOptions = kcContext.userOptions.researchDomainOptions || [];
   const roleOptionsSorted = sortOptionsLabelsByName(roleOptions, advancedMsg, roleMessagePrefix);
-  console.log(roleOptions);
-  console.log(roleOptionsSorted);
 
   const researchDomainOptionsSorted = sortOptionsLabelsByName(
     researchDomainOptions,
@@ -60,18 +58,35 @@ const SurveyStep = ({
     required: advancedMsgStr('required_field_error'),
   };
 
+  const removeOtherKey = (list: string[], otherValue: string) => {
+    const listWithoutOtherKey = list.filter((value) => value !== OTHER_KEY);
+    if (otherValue) {
+      listWithoutOtherKey.push(otherValue);
+    }
+    return listWithoutOtherKey;
+  };
+
+  const hasOtherRole = (userRoles: string[]) =>
+    userRoles.find((role) => !roleOptions.find((defaultRole) => defaultRole.value === role));
+
   return (
     <Form
       form={form}
       className={styles.registrationForm}
       fields={[
         {
-          name: [FORM_FIELDS.ROLES],
-          value: kcContext.userProfile.roles,
-        },
-        {
           name: [FORM_FIELDS.NO_AFFILIATION],
           value: kcContext.userProfile.affiliation ? false : undefined,
+        },
+        {
+          name: [FORM_FIELDS.ROLES],
+          value: hasOtherRole(kcContext.userProfile.roles ?? [])
+            ? [...(kcContext.userProfile.roles ?? []), OTHER_KEY]
+            : kcContext.userProfile.roles,
+        },
+        {
+          name: [FORM_FIELDS.OTHER_ROLE],
+          value: hasOtherRole(kcContext.userProfile.roles ?? []),
         },
         {
           name: [FORM_FIELDS.RESEARCH_DOMAINS],
@@ -87,14 +102,19 @@ const SurveyStep = ({
         },
         {
           name: [FORM_FIELDS.USER_TITLE],
-          value: kcContext.userProfile.user_title,
+          value: kcContext.userProfile.title,
         },
         {
           name: [FORM_FIELDS.EMAIL],
           value: kcContext.userProfile.email,
         },
+        {
+          name: [FORM_FIELDS.LINKEDIN],
+          value: kcContext.userProfile.linkedin,
+        },
       ]}
       onFinish={(values) => {
+        console.log(values);
         dispatch(
           userLogin({
             url: kcContext.url.loginAction,
@@ -106,8 +126,8 @@ const SurveyStep = ({
               email: values[FORM_FIELDS.LAST_NAME],
               linkedin: values[FORM_FIELDS.LINKEDIN],
               affiliation: values[FORM_FIELDS.AFFILIATION],
-              roles: values[FORM_FIELDS.ROLES],
-              research_domains: values[FORM_FIELDS.RESEARCH_DOMAINS],
+              roles: removeOtherKey(values[FORM_FIELDS.ROLES], values[FORM_FIELDS.OTHER_ROLE]),
+              research_domains: removeOtherKey(values[FORM_FIELDS.RESEARCH_DOMAINS], values[FORM_FIELDS.OTHER_RESEARCH_DOMAINS]),
             },
           }),
         );
