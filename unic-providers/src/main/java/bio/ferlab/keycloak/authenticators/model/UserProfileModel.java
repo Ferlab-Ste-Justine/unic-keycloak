@@ -11,6 +11,8 @@ public class UserProfileModel {
     private String era_commons_id;
     private String nih_ned_id;
     private String email;
+    private String linkedin;
+    private String title;
     private String external_individual_fullname;
     private String external_individual_email;
     private List<String> roles;
@@ -132,6 +134,21 @@ public class UserProfileModel {
         this.research_area_description = research_area_description;
     }
 
+    public String getLinkedin() {
+        return linkedin;
+    }
+
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public boolean isAccepted_terms() {
         return accepted_terms;

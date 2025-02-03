@@ -197,6 +197,8 @@ public class UserProfileExistAuthenticator implements Authenticator {
         model.setUnderstand_disclaimer(true);
         model.setConsent_date(LocalDateTime.now());
         model.setCommercial_use_reason(formData.getFirst("commercial_use_reason"));
+        model.setLinkedin(formData.getFirst("linkedin"));
+        model.setTitle(formData.getFirst("title"));
         model.setExternal_individual_email(formData.getFirst("external_individual_email"));
         model.setExternal_individual_fullname(formData.getFirst("external_individual_fullname"));
         model.setPortal_usages(formData.get("portal_usages"));
