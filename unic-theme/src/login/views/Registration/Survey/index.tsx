@@ -127,7 +127,10 @@ const SurveyStep = ({
               linkedin: values[FORM_FIELDS.LINKEDIN],
               affiliation: values[FORM_FIELDS.AFFILIATION],
               roles: removeOtherKey(values[FORM_FIELDS.ROLES], values[FORM_FIELDS.OTHER_ROLE]),
-              research_domains: removeOtherKey(values[FORM_FIELDS.RESEARCH_DOMAINS], values[FORM_FIELDS.OTHER_RESEARCH_DOMAINS]),
+              research_domains: removeOtherKey(
+                values[FORM_FIELDS.RESEARCH_DOMAINS],
+                values[FORM_FIELDS.OTHER_RESEARCH_DOMAINS],
+              ),
             },
           }),
         );
