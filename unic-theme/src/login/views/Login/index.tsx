@@ -10,7 +10,7 @@ import { KcContext } from 'login/keycloak/kcContext';
 
 import GoogleIcon from 'assets/GoogleIcon';
 import MicrosoftIcon from 'assets/MicrosoftIcon';
-import MainSideImage from 'assets/side_image.png';
+import MainSideImage from 'assets/side-img-svg.svg';
 import UNICLogoFull from 'assets/UNICLogoFull';
 
 import styles from './index.module.scss';

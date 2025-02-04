@@ -5,7 +5,7 @@ import { I18n } from 'login/keycloak/i18n';
 import { KcContext } from 'login/keycloak/kcContext';
 import { ErrorContainer } from 'login/views/Error';
 
-import MainSideImage from 'assets/side_image.png';
+import MainSideImage from 'assets/side-img-svg.svg';
 import { useRegistrationFlow } from 'store/registrationFlow';
 
 import SurveyStep from './Survey';

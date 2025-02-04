@@ -292,8 +292,6 @@ const SurveyStep = ({
               className={styles.dynamicField}
               name={FORM_FIELDS.OTHER_ROLE}
               label={advancedMsgStr('role_other_label')}
-              required={false}
-              rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
@@ -329,7 +327,6 @@ const SurveyStep = ({
               className={styles.dynamicField}
               name={FORM_FIELDS.OTHER_RESEARCH_DOMAINS}
               label={advancedMsgStr('role_other_label')}
-              required={false}
             >
               <Input />
             </Form.Item>
