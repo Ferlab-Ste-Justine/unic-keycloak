@@ -90,7 +90,13 @@ const SurveyStep = ({
         },
         {
           name: [FORM_FIELDS.RESEARCH_DOMAINS],
-          value: kcContext.userProfile.research_domains,
+          value: hasOtherRole(kcContext.userProfile.research_domains ?? [])
+            ? [...(kcContext.userProfile.research_domains ?? []), OTHER_KEY]
+            : kcContext.userProfile.research_domains,
+        },
+        {
+          name: [FORM_FIELDS.OTHER_RESEARCH_DOMAINS],
+          value: hasOtherRole(kcContext.userProfile.research_domains ?? []),
         },
         {
           name: [FORM_FIELDS.FIRST_NAME],
