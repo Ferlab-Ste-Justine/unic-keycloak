@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Button, Checkbox, Form, Input, Space, Typography } from 'antd';
+import Title from 'antd/lib/typography/Title';
 import cx from 'classnames';
 import { I18n } from 'keycloakify/login/i18n';
 import { KcContext } from 'login/keycloak/kcContext';
@@ -147,85 +148,41 @@ const SurveyStep = ({
       layout="vertical"
       validateMessages={validateMessages}
     >
+      <Title level={3} className={styles.subSectionTitle}>
+        {advancedMsgStr('survey_identification_title')}
+      </Title>
       <Text className={styles.allFieldRequiredNotice}>{advancedMsg('survey_introduction')}</Text>
-
       <Form.Item
-        noStyle
-        shouldUpdate={(prevValues, currentValues) =>
-          prevValues[FORM_FIELDS.FIRST_NAME] !== currentValues[FORM_FIELDS.FIRST_NAME]
-        }
+        name={FORM_FIELDS.FIRST_NAME}
+        label={advancedMsgStr('first_name')}
+        required={true}
+        rules={[{ required: true, type: 'string' }]}
       >
-        <Form.Item
-          className={cx(styles.withCustomHelp, styles.affiliationField)}
-          label={advancedMsg('first_name')}
-        >
-          <span className={styles.help}>{advancedMsg('first_name')}</span>
-          <Form.Item
-            name={FORM_FIELDS.FIRST_NAME}
-            className={styles.noMargin}
-            required={false}
-            rules={[{ required: true }]}
-          >
-            <Input />
-          </Form.Item>
-        </Form.Item>
+        <Input />
       </Form.Item>
       <Form.Item
-        noStyle
-        shouldUpdate={(prevValues, currentValues) =>
-          prevValues[FORM_FIELDS.LAST_NAME] !== currentValues[FORM_FIELDS.LAST_NAME]
-        }
+        name={FORM_FIELDS.LAST_NAME}
+        label={advancedMsgStr('last_name')}
+        required={true}
+        rules={[{ required: true, type: 'string' }]}
       >
-        <Form.Item
-          className={cx(styles.withCustomHelp, styles.affiliationField)}
-          label={advancedMsg('last_name')}
-        >
-          <span className={styles.help}>{advancedMsg('last_name')}</span>
-          <Form.Item
-            name={FORM_FIELDS.LAST_NAME}
-            className={styles.noMargin}
-            rules={[{ required: true }]}
-          >
-            <Input />
-          </Form.Item>
-        </Form.Item>
+        <Input />
       </Form.Item>
       <Form.Item
-        noStyle
-        shouldUpdate={(prevValues, currentValues) =>
-          prevValues[FORM_FIELDS.USER_TITLE] !== currentValues[FORM_FIELDS.USER_TITLE]
-        }
+        name={FORM_FIELDS.USER_TITLE}
+        label={advancedMsgStr('user_title')}
+        required={false}
+        rules={[{ required: false, type: 'string' }]}
       >
-        <Form.Item
-          className={cx(styles.withCustomHelp, styles.affiliationField)}
-          label={advancedMsg('user_title')}
-        >
-          <span className={styles.help}>{advancedMsg('user_title')}</span>
-          <Form.Item name={FORM_FIELDS.USER_TITLE} className={styles.noMargin}>
-            <Input />
-          </Form.Item>
-        </Form.Item>
+        <Input />
       </Form.Item>
       <Form.Item
-        noStyle
-        shouldUpdate={(prevValues, currentValues) =>
-          prevValues[FORM_FIELDS.AFFILIATION] !== currentValues[FORM_FIELDS.AFFILIATION]
-        }
+        name={FORM_FIELDS.AFFILIATION}
+        label={advancedMsgStr('survey_form_affiliation_help')}
+        required={true}
+        rules={[{ required: true, type: 'string' }]}
       >
-        <Form.Item
-          className={cx(styles.withCustomHelp, styles.affiliationField)}
-          label={advancedMsg('survey_form_affiliation_label')}
-        >
-          <span className={styles.help}>{advancedMsg('survey_form_affiliation_help')}</span>
-          <Form.Item
-            name={FORM_FIELDS.AFFILIATION}
-            className={styles.noMargin}
-            required={false}
-            rules={[{ required: true }]}
-          >
-            <Input />
-          </Form.Item>
-        </Form.Item>
+        <Input />
       </Form.Item>
       <Form.Item
         noStyle
@@ -234,18 +191,12 @@ const SurveyStep = ({
         }
       >
         <Form.Item
-          className={cx(styles.withCustomHelp, styles.affiliationField)}
-          label={advancedMsg('emailScopeConsentText')}
+          name={FORM_FIELDS.EMAIL}
+          label={advancedMsgStr('emailScopeConsentText')}
+          required={true}
+          rules={[{ required: true, type: 'email' }]}
         >
-          <span className={styles.help}>{advancedMsg('emailScopeConsentText')}</span>
-          <Form.Item
-            name={FORM_FIELDS.EMAIL}
-            className={styles.noMargin}
-            required={false}
-            rules={[{ required: true, type: 'email' }]}
-          >
-            <Input />
-          </Form.Item>
+          <Input />
         </Form.Item>
       </Form.Item>
       <Form.Item
@@ -255,31 +206,30 @@ const SurveyStep = ({
         }
       >
         <Form.Item
-          className={cx(styles.withCustomHelp, styles.affiliationField)}
-          label={advancedMsg('survey_form_user_linkedin')}
+          name={FORM_FIELDS.LINKEDIN}
+          label={advancedMsgStr('survey_form_user_linkedin')}
+          required={false}
+          rules={[
+            {
+              required: false,
+              pattern: LINKEDIN_REGEX,
+              message: advancedMsg('survey_form_user_linkedin_non_valid'),
+            },
+          ]}
         >
-          <span className={styles.help}>{advancedMsg('survey_form_user_linkedin')}</span>
-          <Form.Item
-            name={FORM_FIELDS.LINKEDIN}
-            className={styles.noMargin}
-            rules={[
-              {
-                pattern: LINKEDIN_REGEX,
-                message: advancedMsg('survey_form_user_linkedin_non_valid'),
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
+          <Input />
         </Form.Item>
       </Form.Item>
+      <Title level={3} className={styles.subSectionTitle}>
+        {advancedMsgStr('survey_form_function')}
+      </Title>
       <Form.Item
         className={styles.withCustomHelp}
         name={FORM_FIELDS.ROLES}
-        label={advancedMsg('survey_form_function')}
+        label={advancedMsg('survey_form_roles_label')}
       >
         <Checkbox.Group className={styles.checkBoxGroup}>
-          <span className={styles.help}>{advancedMsg('checkbox_help')}</span>
+          <span className={styles.help}>{advancedMsgStr('checkbox_help')}</span>
           <Space direction="vertical">
             {roleOptionsSorted.map((option) => (
               <Checkbox key={option.value} value={option.value}>
@@ -308,14 +258,17 @@ const SurveyStep = ({
           ) : null
         }
       </Form.Item>
+      <Title level={3} className={styles.subSectionTitle}>
+        {advancedMsgStr('survey_form_research_domain_label')}
+      </Title>
       <Form.Item
         className={styles.withCustomHelp}
         name={FORM_FIELDS.RESEARCH_DOMAINS}
-        label={advancedMsg('survey_form_research_domain_label')}
+        label={advancedMsg('survey_form_roles_label')}
       >
         <Checkbox.Group className={styles.checkBoxGroup}>
-          <span className={styles.help}>{advancedMsg('checkbox_help')}</span>
           <Space direction="vertical">
+            <span className={styles.help}>{advancedMsgStr('checkbox_help')}</span>
             {researchDomainOptionsSorted.map((option) => (
               <Checkbox key={option.value} value={option.value}>
                 {option.label}
