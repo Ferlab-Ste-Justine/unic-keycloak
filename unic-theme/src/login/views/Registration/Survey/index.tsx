@@ -132,9 +132,9 @@ const SurveyStep = ({
               external_individual_email: values[FORM_FIELDS.EMAIL],
               linkedin: values[FORM_FIELDS.LINKEDIN],
               affiliation: values[FORM_FIELDS.AFFILIATION],
-              roles: removeOtherKey(values[FORM_FIELDS.ROLES], values[FORM_FIELDS.OTHER_ROLE]),
+              roles: removeOtherKey(values[FORM_FIELDS.ROLES] || [], values[FORM_FIELDS.OTHER_ROLE]),
               research_domains: removeOtherKey(
-                values[FORM_FIELDS.RESEARCH_DOMAINS],
+                values[FORM_FIELDS.RESEARCH_DOMAINS] || [],
                 values[FORM_FIELDS.OTHER_RESEARCH_DOMAINS],
               ),
             },
