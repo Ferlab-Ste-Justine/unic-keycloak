@@ -58,7 +58,7 @@ export const { useI18n } = createUseI18n({
     survey_form_role_manager: 'Manager',
     survey_form_role_student: 'Student',
     survey_form_affiliation_label: 'Affiliation',
-    survey_form_affiliation_help: 'Provide institutional or organizational affiliation',
+    survey_form_affiliation_help: 'Institution',
     survey_form_no_affiliation_label: 'I do not have an institutional affiliation',
     survey_form_research_domain_label: 'Research Domain',
     survey_form_research_domain_aging: 'Aging',
@@ -115,7 +115,7 @@ export const { useI18n } = createUseI18n({
     oauthGrantRequest:
       'By continuing to the next step, you agree to grant access to the following information:',
     profileScopeConsentText: 'Profil',
-    emailScopeConsentText: 'Email address',
+    emailScopeConsentText: 'Institutional email',
     rolesScopeConsentText: 'Role',
     alreadyLoggedIn: 'ALREADY_LOGGED_IN',
     already_logged_in_title: 'You are already connected',
@@ -178,8 +178,7 @@ export const { useI18n } = createUseI18n({
     survey_form_role_manager: 'Gestionnaire',
     survey_form_role_student: 'Étudiant(e)',
     survey_form_affiliation_label: 'Affiliation',
-    survey_form_affiliation_help:
-      'Indiquez votre affiliation institutionnelle ou organisationnelle',
+    survey_form_affiliation_help: 'Institution',
     survey_form_no_affiliation_label: "Je n'ai pas d'affiliation institutionnelle",
     survey_form_research_domain_label: 'Domaine de recherche',
     survey_form_research_domain_bioinformatics: 'Bioinformatique',
@@ -238,7 +237,7 @@ export const { useI18n } = createUseI18n({
     oauthGrantRequest:
       "En passant à l'étape suivante, vous acceptez d'accorder l'accès aux informations suivantes :",
     profileScopeConsentText: 'Profil',
-    emailScopeConsentText: 'Adresse courriel',
+    emailScopeConsentText: 'Courriel institutionnel ',
     rolesScopeConsentText: 'Rôle',
     alreadyLoggedIn: 'ALREADY_LOGGED_IN',
     already_logged_in_title: 'Vous êtes déjà connecté',
