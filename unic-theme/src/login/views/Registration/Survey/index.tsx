@@ -151,7 +151,6 @@ const SurveyStep = ({
       <Title level={3} className={styles.subSectionTitle}>
         {advancedMsgStr('survey_identification_title')}
       </Title>
-      <Text className={styles.allFieldRequiredNotice}>{advancedMsg('survey_introduction')}</Text>
       <Form.Item
         name={FORM_FIELDS.FIRST_NAME}
         label={advancedMsgStr('first_name')}
