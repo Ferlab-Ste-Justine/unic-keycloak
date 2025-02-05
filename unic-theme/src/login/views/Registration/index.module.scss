@@ -7,6 +7,12 @@
     max-width: 750px;
     margin: auto;
   }
+
+  .switchLang {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+  }
 }
 
 @media (max-width: 768px) {
