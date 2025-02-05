@@ -268,11 +268,7 @@ const SurveyStep = ({
       <Title level={3} className={styles.subSectionTitle}>
         {advancedMsgStr('survey_form_research_domain_label')}
       </Title>
-      <Form.Item
-        className={styles.withCustomHelp}
-        name={FORM_FIELDS.RESEARCH_DOMAINS}
-        label={advancedMsg('survey_form_roles_label')}
-      >
+      <Form.Item className={styles.withCustomHelp} name={FORM_FIELDS.RESEARCH_DOMAINS}>
         <Checkbox.Group className={styles.checkBoxGroup}>
           <Space direction="vertical">
             <span className={styles.help}>{advancedMsgStr('checkbox_help')}</span>
