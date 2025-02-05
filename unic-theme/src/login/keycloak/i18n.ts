@@ -4,8 +4,8 @@ import { createUseI18n } from 'keycloakify/login';
 export const { useI18n } = createUseI18n({
   en: {
     login_title: 'Log in with',
-    first_name: 'First Name',
-    last_name: 'Last Name',
+    first_name: 'First name',
+    last_name: 'Last name',
     user_title: 'Title',
     registration_title: 'UNIC Portal Registration',
     portal_introduction:
@@ -47,13 +47,13 @@ export const { useI18n } = createUseI18n({
     survey_form_roles_label: 'I am a:',
     checkbox_help: 'Check all that apply',
     survey_form_user_linkedin: 'LinkedIn',
-    survey_form_user_linkedin_non_valid: 'Not a valid Linkedin URL',
+    survey_form_user_linkedin_non_valid: 'Please enter a valid LinkedIn URL',
     survey_form_role_bioinformatician_software_developer:
       'Bioinformatician, data analyst, statistician',
     survey_form_role_researcher_in_academic_or_non_profit_institution:
       'Researcher in an academic or non-profit institution',
     survey_form_role_clinician: 'Clinician',
-    survey_form_role_employee_in_governmental_agency: 'Employee in a governmental agency',
+    survey_form_role_employee_in_governmental_agency: 'Employee of a government agency',
     survey_form_role_representative_of_commercial_or_for_profit_company:
       'Representative of a commercial or for-profit enterprise',
     survey_form_role_manager: 'Manager',
@@ -61,24 +61,25 @@ export const { useI18n } = createUseI18n({
     survey_form_affiliation_label: 'Affiliation',
     survey_form_affiliation_help: 'Institution',
     survey_form_no_affiliation_label: 'I do not have an institutional affiliation',
-    survey_form_research_domain_label: 'Research Domain',
+    survey_form_research_domain_label: 'Research area',
     survey_form_research_domain_aging: 'Aging',
     survey_form_research_domain_bioinformatics: 'Bioinformatics',
-    survey_form_research_domain_birth_defects: 'Birth Defects',
+    survey_form_research_domain_birth_defects: 'Congenital malformations',
     survey_form_research_domain_cancer: 'Cancer',
     survey_form_research_domain_circulatory_respiratory_health:
-      'Circulatory and Respiratory Health',
-    survey_form_research_domain_general_health: 'General Health',
-    survey_form_research_domain_infection_immunity: 'Infection and Immunity',
+      'Circulatory and respiratory health',
+    survey_form_research_domain_general_health: 'General health',
+    survey_form_research_domain_infection_immunity: 'Infection and immunity',
     survey_form_research_domain_ia: 'Artificial intelligence',
     survey_form_research_domain_musculoskeletal_health_arthritis:
-      'Musculoskeletal Health and Arthritis',
-    survey_form_research_domain_neurodevelopmental_conditions: 'Neurodevelopmental Conditions',
+      'Musculoskeletal health and arthritis',
+    survey_form_research_domain_neurodevelopmental_conditions: 'Neurodevelopmental conditions',
     survey_form_research_domain_neurosciences_mental_health_addiction:
-      'Neurosciences, Mental Health and Addiction',
-    survey_form_research_domain_nutrition_metabolism_diabetes: 'Nutrition, Metabolism and Diabetes',
-    survey_form_research_domain_population_genomics: 'Population Genomics',
-    survey_form_research_domain_rare_diseases: 'Rare Diseases',
+      'Neuroscience, mental health, and addiction',
+    survey_form_research_domain_nutrition_metabolism_diabetes:
+      'Nutrition, metabolism, and diabetes',
+    survey_form_research_domain_population_genomics: 'Population genomics',
+    survey_form_research_domain_rare_diseases: 'Rare diseases',
     survey_form_research_domain_not_applicable: 'Not Applicable',
     submit: 'Submit',
     back: 'Back',
@@ -117,6 +118,7 @@ export const { useI18n } = createUseI18n({
       'By continuing to the next step, you agree to grant access to the following information:',
     profileScopeConsentText: 'Profil',
     emailScopeConsentText: 'Institutional email',
+    emailScopeConsentTextNonValid: 'Enter a valid email',
     rolesScopeConsentText: 'Role',
     alreadyLoggedIn: 'ALREADY_LOGGED_IN',
     already_logged_in_title: 'You are already connected',
@@ -165,10 +167,10 @@ export const { useI18n } = createUseI18n({
     survey_introduction:
       'Merci de bien vouloir remplir ce petit formulaire. En connaître un peu plus sur nos utilisateurs nous est extrêmement utile pour continuer à améliorer le portail. L’information saisie ci-dessous ne sera jamais partagée. Tous les champs ci-dessous doivent être remplis.',
     survey_form_function: 'Fonction',
-    survey_form_roles_label: 'Je suis un(e):',
+    survey_form_roles_label: 'Je suis un :',
     checkbox_help: 'Cochez tout ce qui s’applique',
     survey_form_user_linkedin: 'LinkedIn',
-    survey_form_user_linkedin_non_valid: 'Pas un lien Linkedin valide',
+    survey_form_user_linkedin_non_valid: 'Veuillez entrer une URL LinkedIn valide',
     survey_form_role_bioinformatician_software_developer:
       'Bioinformaticien(ne), Analyste de données, Statisticien(ne)',
     survey_form_role_researcher_in_academic_or_non_profit_institution:
@@ -239,7 +241,8 @@ export const { useI18n } = createUseI18n({
     oauthGrantRequest:
       "En passant à l'étape suivante, vous acceptez d'accorder l'accès aux informations suivantes :",
     profileScopeConsentText: 'Profil',
-    emailScopeConsentText: 'Courriel institutionnel ',
+    emailScopeConsentText: 'Courriel institutionnel',
+    emailScopeConsentTextNonValid: 'Entrer un email valide',
     rolesScopeConsentText: 'Rôle',
     alreadyLoggedIn: 'ALREADY_LOGGED_IN',
     already_logged_in_title: 'Vous êtes déjà connecté',

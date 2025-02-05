@@ -194,7 +194,14 @@ const SurveyStep = ({
           name={FORM_FIELDS.EMAIL}
           label={advancedMsgStr('emailScopeConsentText')}
           required={true}
-          rules={[{ required: true, type: 'email' }]}
+          rules={[
+            {
+              required: true,
+              type: 'email',
+              message: advancedMsg('emailScopeConsentTextNonValid'),
+              validateTrigger: 'onSubmit',
+            },
+          ]}
         >
           <Input />
         </Form.Item>
@@ -214,6 +221,7 @@ const SurveyStep = ({
               required: false,
               pattern: LINKEDIN_REGEX,
               message: advancedMsg('survey_form_user_linkedin_non_valid'),
+              validateTrigger: 'onSubmit',
             },
           ]}
         >
