@@ -172,7 +172,7 @@ export const { useI18n } = createUseI18n({
     survey_form_user_linkedin: 'LinkedIn',
     survey_form_user_linkedin_non_valid: 'Veuillez entrer une URL LinkedIn valide',
     survey_form_role_bioinformatician_software_developer:
-      'Bioinformaticien(ne), Analyste de données, Statisticien(ne)',
+      'Bioinformaticien(ne), analyste de données, statisticien(ne)',
     survey_form_role_researcher_in_academic_or_non_profit_institution:
       'Chercheur(e) dans une institution académique ou sans but lucratif',
     survey_form_role_clinician: 'Clinicien(ne)',
