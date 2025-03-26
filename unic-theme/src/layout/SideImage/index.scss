@@ -43,13 +43,13 @@
 
 @media (min-width: 1351px) {
   .sideImageContainer {
-    width: 575px;
+    width: 560px;
   }
 }
 
 @media (max-width: 1350px) {
   .sideImageContainer {
-    width: 435px;
+    width: 560px;
   }
 }
 
@@ -62,16 +62,8 @@
     display: flex;
 
     &.dark {
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      background: linear-gradient(
-          0deg,
-          transparentize($gray-2, 0.1),
-          transparentize($gray-2, 0.1)
-        ),
-        url(../../assets/side-img-svg.svg) bottom;
-      background-size: cover;
+      background-image: url(../../assets/background.svg);
+
     }
   }
 }
