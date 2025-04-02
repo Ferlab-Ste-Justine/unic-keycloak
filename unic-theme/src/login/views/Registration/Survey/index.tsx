@@ -81,9 +81,12 @@ const SurveyStep = ({
           linkedin: values[FORM_FIELDS.LINKEDIN],
           affiliation: values[FORM_FIELDS.AFFILIATION],
           roles: removeOtherKey(values[FORM_FIELDS.ROLES] || [], values[FORM_FIELDS.OTHER_ROLE]),
-          research_domains: removeOtherKey(values[FORM_FIELDS.RESEARCH_DOMAINS] || [], values[FORM_FIELDS.OTHER_RESEARCH_DOMAINS]),
+          research_domains: removeOtherKey(
+            values[FORM_FIELDS.RESEARCH_DOMAINS] || [],
+            values[FORM_FIELDS.OTHER_RESEARCH_DOMAINS],
+          ),
         },
-      })
+      }),
     );
   };
 
@@ -166,7 +169,7 @@ const SurveyStep = ({
         required={true}
         rules={[{ required: true, type: 'string' }]}
       >
-        <Input />
+        <Input placeholder={advancedMsgStr('survey_form_affiliation_placeholder')} />
       </Form.Item>
       <Form.Item
         noStyle
@@ -187,7 +190,7 @@ const SurveyStep = ({
             },
           ]}
         >
-          <Input />
+          <Input placeholder={advancedMsgStr('emailScopeConsentPlaceholder')} />
         </Form.Item>
       </Form.Item>
       <Form.Item
@@ -221,7 +224,7 @@ const SurveyStep = ({
         required={false}
         rules={[{ required: false, type: 'string' }]}
       >
-        <Input />
+        <Input placeholder={advancedMsgStr('user_title_placeholder')} />
       </Form.Item>
       <Form.Item
         className={styles.withCustomHelp}
