@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { Button, Checkbox, Form, Input, Space, Typography } from 'antd';
+import { Button, Checkbox, Form, Input, Space } from 'antd';
 import Title from 'antd/lib/typography/Title';
-import cx from 'classnames';
 import { I18n } from 'keycloakify/login/i18n';
 import { KcContext } from 'login/keycloak/kcContext';
 
@@ -25,8 +24,6 @@ enum FORM_FIELDS {
   OTHER_RESEARCH_DOMAINS = 'other_research_domains',
 }
 
-const { Text } = Typography;
-
 const roleMessagePrefix = 'survey_form_role_';
 const researchDomainMessagePrefix = 'survey_form_research_domain_';
 
@@ -40,7 +37,7 @@ const SurveyStep = ({
   const dispatch = useDispatch();
   const [form] = Form.useForm();
 
-  const { redirectUrl } = kcContext;
+  const { redirectUrl, userProfile, url } = kcContext;
   const { advancedMsg, advancedMsgStr } = i18n;
 
   const roleOptions = kcContext.userOptions.roleOptions || [];
@@ -69,6 +66,29 @@ const SurveyStep = ({
 
   const hasOtherRole = (userRoles: string[]) =>
     userRoles.find((role) => !roleOptions.find((defaultRole) => defaultRole.value === role));
+
+  const handleSubmit = (values: any) => {
+    dispatch(
+      userLogin({
+        url: url.loginAction,
+        redirectUrl,
+        userInfo: {
+          first_name: values[FORM_FIELDS.FIRST_NAME],
+          last_name: values[FORM_FIELDS.LAST_NAME],
+          title: values[FORM_FIELDS.USER_TITLE],
+          email: userProfile.email,
+          external_individual_email: values[FORM_FIELDS.EMAIL],
+          linkedin: values[FORM_FIELDS.LINKEDIN],
+          affiliation: values[FORM_FIELDS.AFFILIATION],
+          roles: removeOtherKey(values[FORM_FIELDS.ROLES] || [], values[FORM_FIELDS.OTHER_ROLE]),
+          research_domains: removeOtherKey(
+            values[FORM_FIELDS.RESEARCH_DOMAINS] || [],
+            values[FORM_FIELDS.OTHER_RESEARCH_DOMAINS],
+          ),
+        },
+      }),
+    );
+  };
 
   return (
     <Form
@@ -120,31 +140,7 @@ const SurveyStep = ({
           value: kcContext.userProfile.linkedin,
         },
       ]}
-      onFinish={(values) => {
-        dispatch(
-          userLogin({
-            url: kcContext.url.loginAction,
-            redirectUrl: kcContext.redirectUrl,
-            userInfo: {
-              first_name: values[FORM_FIELDS.FIRST_NAME],
-              last_name: values[FORM_FIELDS.LAST_NAME],
-              title: values[FORM_FIELDS.USER_TITLE],
-              email: kcContext.userProfile.email,
-              external_individual_email: values[FORM_FIELDS.EMAIL],
-              linkedin: values[FORM_FIELDS.LINKEDIN],
-              affiliation: values[FORM_FIELDS.AFFILIATION],
-              roles: removeOtherKey(
-                values[FORM_FIELDS.ROLES] || [],
-                values[FORM_FIELDS.OTHER_ROLE],
-              ),
-              research_domains: removeOtherKey(
-                values[FORM_FIELDS.RESEARCH_DOMAINS] || [],
-                values[FORM_FIELDS.OTHER_RESEARCH_DOMAINS],
-              ),
-            },
-          }),
-        );
-      }}
+      onFinish={handleSubmit}
       layout="vertical"
       validateMessages={validateMessages}
     >
@@ -168,20 +164,12 @@ const SurveyStep = ({
         <Input />
       </Form.Item>
       <Form.Item
-        name={FORM_FIELDS.USER_TITLE}
-        label={advancedMsgStr('user_title')}
-        required={false}
-        rules={[{ required: false, type: 'string' }]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
         name={FORM_FIELDS.AFFILIATION}
         label={advancedMsgStr('survey_form_affiliation_help')}
         required={true}
         rules={[{ required: true, type: 'string' }]}
       >
-        <Input />
+        <Input placeholder={advancedMsgStr('survey_form_affiliation_placeholder')} />
       </Form.Item>
       <Form.Item
         noStyle
@@ -202,7 +190,7 @@ const SurveyStep = ({
             },
           ]}
         >
-          <Input />
+          <Input placeholder={advancedMsgStr('emailScopeConsentPlaceholder')} />
         </Form.Item>
       </Form.Item>
       <Form.Item
@@ -230,6 +218,14 @@ const SurveyStep = ({
       <Title level={3} className={styles.subSectionTitle}>
         {advancedMsgStr('survey_form_function')}
       </Title>
+      <Form.Item
+        name={FORM_FIELDS.USER_TITLE}
+        label={advancedMsgStr('user_title')}
+        required={false}
+        rules={[{ required: false, type: 'string' }]}
+      >
+        <Input placeholder={advancedMsgStr('user_title_placeholder')} />
+      </Form.Item>
       <Form.Item
         className={styles.withCustomHelp}
         name={FORM_FIELDS.ROLES}

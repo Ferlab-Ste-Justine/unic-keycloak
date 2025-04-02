@@ -7,6 +7,7 @@ export const { useI18n } = createUseI18n({
     first_name: 'First name',
     last_name: 'Last name',
     user_title: 'Title',
+    user_title_placeholder: 'e.g. Research scientist',
     registration_title: 'UNIC Portal Registration',
     portal_introduction:
       'The UNIC data portal enables research, visualization and access to sensitive and confidential data. Some datasets may require additional approvals and terms and conditions from the studies trust.',
@@ -47,7 +48,7 @@ export const { useI18n } = createUseI18n({
     survey_form_roles_label: 'I am a:',
     checkbox_help: 'Check all that apply',
     survey_form_user_linkedin: 'LinkedIn',
-    survey_form_user_linkedin_non_valid: 'Please enter a valid LinkedIn URL',
+    survey_form_user_linkedin_non_valid: 'Enter a valid LinkedIn URL',
     survey_form_role_bioinformatician_software_developer:
       'Bioinformatician, data analyst, statistician',
     survey_form_role_researcher_in_academic_or_non_profit_institution:
@@ -59,7 +60,8 @@ export const { useI18n } = createUseI18n({
     survey_form_role_manager: 'Manager',
     survey_form_role_student: 'Student',
     survey_form_affiliation_label: 'Affiliation',
-    survey_form_affiliation_help: 'Institution',
+    survey_form_affiliation_help: 'Institution/Company',
+    survey_form_affiliation_placeholder: 'e.g. CHU Sainte-Justine',
     survey_form_no_affiliation_label: 'I do not have an institutional affiliation',
     survey_form_research_domain_label: 'Research area',
     survey_form_research_domain_aging: 'Aging',
@@ -117,7 +119,8 @@ export const { useI18n } = createUseI18n({
     oauthGrantRequest:
       'By continuing to the next step, you agree to grant access to the following information:',
     profileScopeConsentText: 'Profil',
-    emailScopeConsentText: 'Institutional email',
+    emailScopeConsentText: 'Professional email',
+    emailScopeConsentPlaceholder: 'email@domain.com',
     emailScopeConsentTextNonValid: 'Enter a valid email',
     rolesScopeConsentText: 'Role',
     alreadyLoggedIn: 'ALREADY_LOGGED_IN',
@@ -129,6 +132,7 @@ export const { useI18n } = createUseI18n({
     first_name: 'Prénom',
     last_name: 'Nom',
     user_title: 'Titre',
+    user_title_placeholder: 'Ex : Chercheur',
     registration_title: 'Inscription au portail du UNIC',
     portal_introduction:
       'Le portail de données du UNIC permet la recherche, la visualisation et l’accès à des données sensibles et confidentielles. Certains jeux de données peuvent exiger des autorisations et des termes et conditions supplémentaires de la part des études fiduciaires.',
@@ -170,7 +174,7 @@ export const { useI18n } = createUseI18n({
     survey_form_roles_label: 'Je suis un :',
     checkbox_help: 'Cochez tout ce qui s’applique',
     survey_form_user_linkedin: 'LinkedIn',
-    survey_form_user_linkedin_non_valid: 'Veuillez entrer une URL LinkedIn valide',
+    survey_form_user_linkedin_non_valid: 'Entrer une URL LinkedIn valide',
     survey_form_role_bioinformatician_software_developer:
       'Bioinformaticien(ne), analyste de données, statisticien(ne)',
     survey_form_role_researcher_in_academic_or_non_profit_institution:
@@ -182,7 +186,8 @@ export const { useI18n } = createUseI18n({
     survey_form_role_manager: 'Gestionnaire',
     survey_form_role_student: 'Étudiant(e)',
     survey_form_affiliation_label: 'Affiliation',
-    survey_form_affiliation_help: 'Institution',
+    survey_form_affiliation_help: 'Institution/Entreprise',
+    survey_form_affiliation_placeholder: 'Ex : CHU Sainte-Justine',
     survey_form_no_affiliation_label: "Je n'ai pas d'affiliation institutionnelle",
     survey_form_research_domain_label: 'Domaine de recherche',
     survey_form_research_domain_bioinformatics: 'Bioinformatique',
@@ -241,8 +246,9 @@ export const { useI18n } = createUseI18n({
     oauthGrantRequest:
       "En passant à l'étape suivante, vous acceptez d'accorder l'accès aux informations suivantes :",
     profileScopeConsentText: 'Profil',
-    emailScopeConsentText: 'Courriel institutionnel',
-    emailScopeConsentTextNonValid: 'Entrer un email valide',
+    emailScopeConsentText: 'Courriel professionnel',
+    emailScopeConsentPlaceholder: 'email@domain.com',
+    emailScopeConsentTextNonValid: 'Entrer un courriel valide',
     rolesScopeConsentText: 'Rôle',
     alreadyLoggedIn: 'ALREADY_LOGGED_IN',
     already_logged_in_title: 'Vous êtes déjà connecté',
