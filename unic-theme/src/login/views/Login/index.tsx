@@ -9,7 +9,7 @@ import type { I18n } from 'login/keycloak/i18n';
 import { KcContext } from 'login/keycloak/kcContext';
 
 import GoogleIcon from 'assets/GoogleIcon';
-import MicrosoftIcon from 'assets/MicrosoftIcon';
+import LysQuebec from 'assets/LysQuebec.svg';
 import MainSideImage from 'assets/side-img-svg.svg';
 import UNICLogoFull from 'assets/UNICLogoFull';
 
@@ -31,7 +31,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: 'log
 
   const socialImageMapping: any = {
     google: <GoogleIcon />,
-    microsoft: <MicrosoftIcon />,
+    microsoft: <LysQuebec />,
   };
 
   const socialProviders = social.providers || [];
