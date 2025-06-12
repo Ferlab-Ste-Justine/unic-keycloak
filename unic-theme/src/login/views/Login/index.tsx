@@ -9,7 +9,7 @@ import type { I18n } from 'login/keycloak/i18n';
 import { KcContext } from 'login/keycloak/kcContext';
 
 import GoogleIcon from 'assets/GoogleIcon';
-import LysQuebec from 'assets/LysQuebec.svg';
+import LysQuebec from 'assets/LysQuebec';
 import MainSideImage from 'assets/side-img-svg.svg';
 import UNICLogoFull from 'assets/UNICLogoFull';
 
